@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGNUP</title>
+
+    <style>
+        * {
+            margin: 0%;
+            padding: 0%;
+        }
+
+        body {
+            overflow: hidden;
+        }
+
+        #main {
+            width: 100vw;
+            height: 100vh;
+
+            display: flex;
+            flex-flow: column;
+        }
+
+        #navbar {
+            width: 90%;
+            height: 10%;
+            border: 1px solid black;
+            margin: 1% auto;
+        }
+
+        #navbar div {
+            margin-left: 70%;
+        }
+
+        #navbar div button {
+            height: 40px;
+            margin: 5%;
+        }
+
+        button {
+            margin-top: 2%;
+            background-color: crimson;
+        }
+
+        #opscreen {
+            width: 90%;
+            height: 80%;
+            border: 1px solid black;
+            margin: 1% auto;
+        }
+
+        #formTB {
+            width: 40%;
+            height: 50%;
+            border: 1px solid black;
+            margin: 8% auto;
+            text-align: center;
+        }
+
+        input {
+            margin-top: 1%;
+            width: 40%;
+            height: 25px;
+        }
+
+        button {
+            width: 20%;
+            height: 20%;
+        }
+
+        #form {
+            margin-top: 5%;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <h1 style="text-align: center;margin-top: 1%;color: red;">payment</h1>
+    <div id="main">
+        <div id="navbar">
+            <!-- <div>
+                <button onclick="payment()">Payment</button>
+            </div> -->
+        </div>
+
+        <div id="opscreen">
+
+            <div id="formTB">
+                <form id="form">
+                    <input type="text"  placeholder="card Holder name" id="name"> <br>
+                    <input type="number"  placeholder="card number" id="password"> <br>
+                    <input type="text" id="date" placeholder="mm/yy" style="width: 10%;">
+                    <input type="number" id="cvv" placeholder="cvv" style="width: 10%; margin-left: 10%;"><br>
+                </form>
+                <button onclick="payment()">place order</button>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+
+
+    function payment() {
+
+
+
+        let form = document.getElementById("form");
+        let name1 = form.name.value;
+        let pass = form.password.value;
+
+
+        var detail = {
+            name: name1,
+            password: pass
+        }
+
+
+
+        let arr;
+        arr = localStorage.getItem("mainData");
+        if (arr == null) {
+            arr = [];
+        } else {
+            arr = JSON.parse(localStorage.getItem("mainData"));
+        }
+        arr.push(detail);
+        console.log(detail);
+        localStorage.setItem("mainData", JSON.stringify(arr));
+
+    }
+
+    function payment() {
+
+        alert("Your order is accepted");
+
+
+
+        setInterval(alert("Your order is successfully placed"), 3000);
+
+
+
+    }
+
+
+
+
+</script>

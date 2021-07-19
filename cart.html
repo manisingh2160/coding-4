@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+
+    <style>
+        * {
+            margin: 0%;
+            padding: 0%;
+            ;
+        }
+
+        body {
+            overflow: hidden;
+        }
+
+        #main {
+            width: 100vw;
+            height: 100vh;
+
+            display: flex;
+            flex-direction: column;
+        }
+
+        #navbar {
+            width: 90%;
+            height: 10%;
+            margin: 1% auto;
+            border: 1px solid black;
+        }
+
+        #display {
+            width: 90%;
+            height: 80%;
+            margin: 1% auto;
+            border: 1px solid black;
+
+            display: grid;
+            grid-template-columns: 33% 33% 33%;
+            grid-template-rows: 33% 33% 33%;
+        }
+
+        img {
+            width: 50%;
+            height: 70%;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1 style="text-align: center;margin-top: 1%;color: red;">cart</h1>
+    <div id="main">
+
+        <div id="navbar">
+
+            <button
+                style="margin-left: 90%;margin-top: 1.5%;height: 30px;background-color: cadetblue;color: rgb(83, 20, 33);"
+                onclick="order()"><b>checkout</b></button>
+        </div>
+
+        <div id="display">
+
+        </div>
+
+    </div>
+</body>
+
+</html>
+
+<script>
+
+    let abc = JSON.parse(localStorage.getItem("cart"));
+
+    let x = document.getElementById("display");
+
+    for (let i = 0; i < abc.length; i++) {
+
+        let y = document.createElement("div");
+
+        let img = document.createElement("img");
+        img.src = abc[i].image;
+
+        let price = document.createElement("p");
+        price.innerHTML = `Price : ${abc[i].price}`;
+
+
+        let des = document.createElement("p");
+        des.innerHTML = `Description : ${abc[i].description}`;
+
+        let brand = document.createElement("p");
+        brand.innerHTML = `brand :${abc[i].brand} `;
+
+        y.append(img, price, des, brand);
+        x.append(y);
+    }
+function order(){
+    window.location.href="checkout.html"
+}
+
+</script>
